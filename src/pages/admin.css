@@ -1,0 +1,227 @@
+/* ============================ Admin console ============================ */
+
+/* ---- Passcode gate ---- */
+.gate {
+  min-height: 100svh;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.4rem;
+  text-align: center;
+}
+.gate__title {
+  font-size: clamp(2rem, 9vw, 2.6rem);
+}
+.gate__form {
+  width: 100%;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+.gate__input {
+  width: 100%;
+  background: var(--bg-sunken);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 0.8rem 0.9rem;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+.gate__input:focus {
+  outline: none;
+  border-color: var(--line-strong);
+}
+
+/* ---- Console layout ---- */
+.admin {
+  padding: clamp(1.5rem, 5vw, 2.5rem) var(--pad) 4rem;
+}
+.admin__wrap {
+  max-width: 1040px;
+  margin-inline: auto;
+}
+.admin__head {
+  margin-bottom: 1.2rem;
+}
+.admin__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.8rem, 7vw, 2.4rem);
+}
+
+/* ---- Dashboard stats ---- */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.6rem;
+  margin-bottom: 1.4rem;
+}
+.stat {
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.9rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.stat__value {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  line-height: 1;
+}
+.stat__label {
+  font-size: 0.62rem;
+}
+
+/* ---- Controls ---- */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1.2rem;
+  align-items: center;
+}
+.controls__search,
+.controls__select {
+  background: var(--bg-sunken);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 0.8rem;
+  color: var(--fg);
+}
+.controls__search {
+  flex: 1 1 180px;
+}
+.controls__search:focus,
+.controls__select:focus {
+  outline: none;
+  border-color: var(--line-strong);
+}
+.controls__select option {
+  color: #111;
+}
+.controls__check {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.88rem;
+  color: var(--fg-muted);
+}
+.controls__check input {
+  accent-color: var(--accent);
+}
+
+/* ---- Guest list (cards on mobile) ---- */
+.guests__head {
+  display: none;
+}
+.guest {
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.9rem 1rem;
+  margin-bottom: 0.7rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem 0.8rem;
+}
+/* show field labels on the mobile cards */
+.guest > div[data-label]::before {
+  content: attr(data-label);
+  display: block;
+  font-family: var(--font-label);
+  text-transform: uppercase;
+  letter-spacing: var(--label-spacing);
+  font-size: 0.58rem;
+  color: var(--fg-faint);
+  margin-bottom: 0.15rem;
+}
+.guest__name {
+  grid-column: 1 / -1;
+  font-size: 1.05rem;
+}
+.guest__action {
+  grid-column: 1 / -1;
+}
+.wa-btn {
+  width: 100%;
+  padding: 0.6rem 1rem;
+}
+
+.badge {
+  display: inline-block;
+  font-family: var(--font-label);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.66rem;
+  padding: 0.22rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+}
+.badge--Yes {
+  background: rgba(207, 224, 184, 0.18);
+  color: var(--ok);
+  border-color: rgba(207, 224, 184, 0.4);
+}
+.badge--No {
+  background: rgba(230, 185, 166, 0.16);
+  color: var(--danger);
+  border-color: rgba(230, 185, 166, 0.4);
+}
+.badge--pending {
+  color: var(--fg-muted);
+}
+.sent-yes {
+  color: var(--ok);
+}
+.guests__empty {
+  color: var(--fg-muted);
+  padding: 1.5rem 0;
+  text-align: center;
+}
+
+/* ---- Desktop: table layout ---- */
+@media (min-width: 760px) {
+  .stats {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  .guests__head,
+  .guest {
+    display: grid;
+    grid-template-columns: 2fr 1.4fr 0.9fr 0.7fr 0.6fr 0.9fr 1.1fr;
+    gap: 0.8rem;
+    align-items: center;
+  }
+  .guests__head {
+    padding: 0 1rem 0.5rem;
+    font-family: var(--font-label);
+    text-transform: uppercase;
+    letter-spacing: var(--label-spacing);
+    font-size: 0.6rem;
+    color: var(--fg-faint);
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 0.4rem;
+  }
+  .guest {
+    margin-bottom: 0.5rem;
+  }
+  .guest > div[data-label]::before {
+    content: none;
+  }
+  .guest__name {
+    grid-column: auto;
+    font-size: 1rem;
+  }
+  .guest__action {
+    grid-column: auto;
+  }
+  .wa-btn {
+    width: auto;
+    padding: 0.5rem 0.9rem;
+    font-size: 0.85rem;
+  }
+}
