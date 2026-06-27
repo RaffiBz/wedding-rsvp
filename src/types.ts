@@ -38,7 +38,8 @@ export interface AdminGuest {
   guest_id: string
   token: string
   name: string
-  phone: string
+  // Backend returns a number for populated rows and "" for blanks.
+  phone: string | number
   max_party_size: number
   sent_at: string | null
   rsvp_status: 'Yes' | 'No' | null

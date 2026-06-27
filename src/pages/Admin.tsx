@@ -12,7 +12,7 @@ function statusOf(g: AdminGuest): 'Yes' | 'No' | 'pending' {
 }
 
 function whatsappLink(g: AdminGuest): string {
-  const phone = (g.phone ?? '').replace(/\D/g, '') // intl digits only, no + or spaces
+  const phone = String(g.phone ?? '').replace(/\D/g, '') // intl digits only, no + or spaces
   const msg = encodeURIComponent(
     `Hi ${g.name}! Raffi & Nver would love to celebrate with you. RSVP here: ${SITE_URL}/rsvp?t=${g.token}`
   )
