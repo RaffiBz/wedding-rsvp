@@ -133,7 +133,7 @@ export default function Invite() {
 
   return (
     <main className="invite">
-      <Hero guestName={resolved.name} onScrollToForm={scrollToForm} />
+      <Hero onScrollToForm={scrollToForm} />
 
       <section className="form-section" ref={formRef} id="rsvp-form">
         <div className="page">

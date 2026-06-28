@@ -4,9 +4,10 @@
   width: 100%;
 }
 
-/* ---------- Hero ---------- */
+/* ---------- Hero (poster layout) ---------- */
 .hero {
   position: relative;
+  overflow: hidden; /* clip the flanking rules; never spawn a horizontal scrollbar */
   min-height: 100svh;
   min-height: 100vh; /* fallback */
   display: flex;
@@ -14,95 +15,132 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: clamp(2.5rem, 9vh, 5rem) var(--pad) 5.5rem;
-  /* a soft radial vignette to lift the centered content off the flat green */
+  padding: clamp(2.75rem, 8vh, 5rem) var(--pad) 4.5rem;
   background:
-    radial-gradient(120% 90% at 50% 18%, rgba(236, 230, 216, 0.06), transparent 60%),
+    radial-gradient(120% 90% at 50% 16%, rgba(236, 228, 214, 0.05), transparent 60%),
     var(--bg);
 }
 
 .hero__inner {
   width: 100%;
-  max-width: var(--maxw);
+  max-width: 30rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.1rem;
+  gap: clamp(1.4rem, 4.5vh, 2.2rem);
 }
 
-.hero__art {
-  color: var(--accent);
-  opacity: 0.9;
-}
-
-.bird-glass {
-  width: 84px;
-  height: auto;
-}
-.bird-glass--sm {
-  width: 64px;
-  margin-bottom: 0.5rem;
-}
-
-.hero__greeting {
+/* Mono, uppercase, wide-tracked blocks — the poster's typewriter voice. */
+.hero__welcome,
+.hero__day,
+.hero__block {
+  font-family: var(--font-label);
+  text-transform: uppercase;
+  color: var(--fg);
   margin: 0;
 }
 
 .hero__welcome {
-  max-width: 30ch;
-  color: var(--fg-muted);
-  font-size: 0.98rem;
-  line-height: 1.55;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  line-height: 1.9;
 }
 
+/* The couple — display face, the one moment of serif. */
 .hero__names {
   font-family: var(--font-display);
-  font-size: var(--display-xl);
-  line-height: 0.98;
+  font-size: clamp(3rem, 17vw, 5.5rem);
+  line-height: 0.95;
   font-weight: 400;
   letter-spacing: 0.01em;
-  margin: 0.1rem 0;
+  margin: 0;
 }
 .hero__amp {
-  font-style: italic;
-  font-size: 0.62em;
-  vertical-align: 0.06em;
-  margin: 0 0.12em;
-  color: var(--fg-muted);
+  font-size: 0.66em;
+  vertical-align: 0.04em;
+  margin: 0 0.1em;
 }
 
+/* Date stack: small mono "SATURDAY" over big display numerals with bar rules. */
+.hero__when {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+.hero__day {
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  /* optical centering against the wide letter-spacing */
+  text-indent: 0.3em;
+}
 .hero__date {
-  font-size: 0.92rem;
-  color: var(--fg);
-  letter-spacing: 0.26em;
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 9vw, 3rem);
+  line-height: 1;
+  letter-spacing: 0.06em;
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 0.45em;
+}
+.hero__bar {
+  font-family: var(--font-label);
+  font-size: 0.62em;
+  font-weight: 400;
+  color: var(--fg-muted);
+  transform: translateY(-0.04em);
 }
 
 .hero__details {
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
-  margin-top: 0.4rem;
+  gap: clamp(1.1rem, 3.5vh, 1.8rem);
 }
-.hero__line {
-  font-size: 0.95rem;
-  line-height: 1.5;
+.hero__block {
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  line-height: 2;
   color: var(--fg-muted);
-  max-width: 40ch;
+  max-width: 34ch;
 }
-.hero__line-label {
+
+/* Bird-on-coupe anchoring the bottom, flanked by two thin cream rules at the
+   level of the glass base — recreates the poster's hand-drawn lines. */
+.hero__art {
+  position: relative;
+  width: min(74%, 320px);
+  margin-top: clamp(0.5rem, 2vh, 1.25rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero__bird {
   display: block;
-  font-family: var(--font-label);
-  text-transform: uppercase;
-  letter-spacing: var(--label-spacing);
-  font-size: 0.66rem;
-  color: var(--fg-faint);
-  margin-bottom: 0.2rem;
+  width: 100%;
+  height: auto;
+}
+.hero__rule {
+  position: absolute;
+  top: 62%;
+  height: 1px;
+  width: clamp(2rem, 11vw, 3rem);
+  background: var(--line-strong);
+  opacity: 0.6;
+}
+.hero__rule--l {
+  right: 100%;
+  margin-right: 0.4rem;
+}
+.hero__rule--r {
+  left: 100%;
+  margin-left: 0.4rem;
 }
 
 /* ---------- Scroll cue ---------- */
 .scroll-cue {
   position: absolute;
-  bottom: 1.5rem;
+  bottom: 1.1rem;
   left: 50%;
   transform: translateX(-50%);
   display: flex;

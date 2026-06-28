@@ -1,10 +1,8 @@
 import { motion, useReducedMotion, type Variants } from 'framer-motion'
-import BirdGlass from './BirdGlass'
 import ScrollCue from './ScrollCue'
+import birdCoupe from '../assets/bird-coupe.png'
 
 interface HeroProps {
-  /** Resolved party name, e.g. "The Melkonian Family". Optional greeting. */
-  guestName?: string
   /** Smooth-scroll to the RSVP form (the only affordance to reach it). */
   onScrollToForm: () => void
 }
@@ -12,7 +10,7 @@ interface HeroProps {
 const container: Variants = {
   hidden: {},
   show: {
-    transition: { staggerChildren: 0.18, delayChildren: 0.2 },
+    transition: { staggerChildren: 0.16, delayChildren: 0.2 },
   },
 }
 
@@ -25,7 +23,7 @@ const rise: Variants = {
   },
 }
 
-export default function Hero({ guestName, onScrollToForm }: HeroProps) {
+export default function Hero({ onScrollToForm }: HeroProps) {
   const reduce = useReducedMotion()
   // With reduced motion, render everything immediately (no stagger/transform).
   const variants = reduce ? undefined : rise
@@ -38,41 +36,45 @@ export default function Hero({ guestName, onScrollToForm }: HeroProps) {
         initial={reduce ? false : 'hidden'}
         animate={reduce ? false : 'show'}
       >
-        <motion.div variants={variants} className="hero__art">
-          <BirdGlass className="bird-glass" />
-        </motion.div>
-
-        {guestName && (
-          <motion.p variants={variants} className="hero__greeting label">
-            Dear {guestName}
-          </motion.p>
-        )}
-
         <motion.p variants={variants} className="hero__welcome">
-          We would like to welcome you to celebrate the union of
+          We would like to welcome you to
+          <br />
+          celebrate the union of
         </motion.p>
 
         <motion.h1 variants={variants} className="hero__names">
           Raffi <span className="hero__amp">&amp;</span> Nver
         </motion.h1>
 
-        <motion.p variants={variants} className="hero__date label">
-          Saturday 01 · 08 · 26
-        </motion.p>
-
-        <motion.div variants={variants} className="hero__details">
-          <p className="hero__line">
-            <span className="hero__line-label">Ceremony</span>
-            Begins 2:30&nbsp;PM · 64 Komitas Ave, Yerevan
-          </p>
-          <p className="hero__line">
-            <span className="hero__line-label">Reception to follow</span>
-            Outdoor dinner under the stars, 6:00&nbsp;PM
-            <br />
-            Kotayk Region, Yeghvard · Aghasi Khanjyan Street 3
+        <motion.div variants={variants} className="hero__when">
+          <p className="hero__day">Saturday</p>
+          <p className="hero__date">
+            01<span className="hero__bar">|</span>08<span className="hero__bar">|</span>26
           </p>
         </motion.div>
 
+        <motion.div variants={variants} className="hero__details">
+          <p className="hero__block">
+            Ceremony begins 2:30&nbsp;PM
+            <br />
+            64 Komitas Ave, Yerevan 0014, Armenia
+          </p>
+          <p className="hero__block">
+            Reception to follow with an outdoor dinner
+            <br />
+            celebration under the stars
+            <br />
+            at 6:00&nbsp;PM
+            <br />
+            Kotayk Region, Yeghvard, Aghasi Khanjyan Street, 3
+          </p>
+        </motion.div>
+
+        <motion.div variants={variants} className="hero__art">
+          <span className="hero__rule hero__rule--l" aria-hidden="true" />
+          <img className="hero__bird" src={birdCoupe} alt="" />
+          <span className="hero__rule hero__rule--r" aria-hidden="true" />
+        </motion.div>
       </motion.div>
 
       <ScrollCue onClick={onScrollToForm} />

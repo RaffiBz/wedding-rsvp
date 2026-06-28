@@ -1,28 +1,28 @@
 /*
- * Design tokens — PLACEHOLDERS. The owner will swap colors/fonts here.
+ * Design tokens — matched to the printed poster.
  * Everything else references these vars; never hardcode color/font elsewhere.
- * Reference mood: deep green ground, cream text, elegant serif display,
- * letter-spaced mono caps for labels.
+ * Mood: deep green ground, cream text, "Tan Mon Cheri" serif display for the
+ * names + date, "Courier Prime" typewriter mono caps for everything else.
  */
 :root {
-  /* color */
-  --bg: #2f4a32;            /* deep green placeholder */
-  --bg-elev: #36543a;       /* slightly raised surface (form card) */
-  --bg-sunken: #294028;     /* inputs / wells */
-  --fg: #ece6d8;            /* cream placeholder */
-  --fg-muted: #b9bfae;      /* muted cream for secondary text */
-  --fg-faint: #8a9483;      /* faint, for hints/placeholders */
-  --accent: #ece6d8;        /* primary accent (cream) */
-  --accent-ink: #2f4a32;    /* text on top of accent fills */
-  --line: rgba(236, 230, 216, 0.18); /* hairline borders */
-  --line-strong: rgba(236, 230, 216, 0.38);
+  /* color (poster) */
+  --bg: #32522D;            /* deep poster green */
+  --bg-elev: #3a5d34;       /* slightly raised surface (form card) */
+  --bg-sunken: #2b4727;     /* inputs / wells */
+  --fg: #ECE4D6;            /* poster cream */
+  --fg-muted: #c0bda9;      /* muted cream for secondary text */
+  --fg-faint: #8f9582;      /* faint, for hints/placeholders */
+  --accent: #ECE4D6;        /* primary accent (cream) */
+  --accent-ink: #32522D;    /* text on top of accent fills */
+  --line: rgba(236, 228, 214, 0.18); /* hairline borders */
+  --line-strong: rgba(236, 228, 214, 0.4);
   --danger: #e6b9a6;        /* soft terracotta for errors on dark */
   --ok: #cfe0b8;            /* soft sage for success */
 
-  /* type */
-  --font-display: 'Times New Roman', serif;       /* placeholder serif */
-  --font-label: ui-monospace, 'Cascadia Code', monospace; /* placeholder mono */
-  --font-body: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  /* type — display only for names + date numerals; mono everywhere else */
+  --font-display: 'Tan Mon Cheri', 'Cormorant Garamond', serif;
+  --font-label: 'Courier Prime', ui-monospace, monospace;
+  --font-body: 'Courier Prime', ui-monospace, monospace;
 
   /* scale (mobile-first; fluid via clamp) */
   --display-xl: clamp(2.75rem, 14vw, 5rem);  /* RAFFI & NVER */

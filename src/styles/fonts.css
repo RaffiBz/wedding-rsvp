@@ -1,0 +1,16 @@
+/*
+ * Tan Mon Cheri — a commercial display face (NOT on Google Fonts) used ONLY for
+ * the couple's names "RAFFI & NVER" and the big date numerals "01 | 08 | 26".
+ *
+ * Drop the licensed file in at src/assets/fonts/TanMonCheri.woff2 (replace the
+ * placeholder) and it "just works" — no other change needed. Until a valid file
+ * is present the browser fails to decode it and falls back to Cormorant Garamond
+ * (loaded from Google Fonts in index.html), so the layout always renders.
+ */
+@font-face {
+  font-family: 'Tan Mon Cheri';
+  src: url('../assets/fonts/TanMonCheri.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
