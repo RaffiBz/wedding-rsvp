@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Raffi & Nver — You're Invited</title>
+
+    <!--
+      Open Graph / link-preview tags — IDENTICAL to index.html. WhatsApp's
+      crawler (no JS) may hit this file directly for an already-shared
+      /rsvp?t=… link, so the preview must render from here too.
+      PRODUCTION_URL = https://raffibz.github.io/wedding-rsvp
+    -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Raffi & Nver — Save the Date" />
+    <meta property="og:description" content="Saturday 01.08.26 · Yerevan. We'd love to celebrate with you — RSVP here." />
+    <meta property="og:image" content="https://raffibz.github.io/wedding-rsvp/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://raffibz.github.io/wedding-rsvp/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Raffi & Nver — Save the Date" />
+    <meta name="twitter:description" content="Saturday 01.08.26 · Yerevan. RSVP here." />
+    <meta name="twitter:image" content="https://raffibz.github.io/wedding-rsvp/og-image.jpg" />
+
+    <!--
+      Backward-compat bridge for already-shared NON-hash links. GitHub Pages
+      serves this 404.html for any unknown real path (e.g. /wedding-rsvp/rsvp?t=abc).
+      We rewrite that to the HashRouter equivalent, preserving the token:
+        /wedding-rsvp/rsvp?t=abc  ->  /wedding-rsvp/#/rsvp?t=abc
+      New links already use the hash form and never reach here.
+    -->
+    <script>
+      (function () {
+        var base = '/wedding-rsvp/';
+        var loc = window.location;
+        // strip the repo base from the pathname to get the app route
+        var path = loc.pathname.indexOf(base) === 0 ? loc.pathname.slice(base.length) : '';
+        var search = loc.search || '';
+        // redirect /wedding-rsvp/rsvp?t=abc  ->  /wedding-rsvp/#/rsvp?t=abc
+        window.location.replace(base + '#/' + path + search);
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>
