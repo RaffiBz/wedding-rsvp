@@ -6,6 +6,27 @@
     <meta name="theme-color" content="#32522D" />
     <title>Raffi & Nver — You're Invited</title>
     <meta name="description" content="Join us to celebrate the union of Raffi & Nver." />
+
+    <!--
+      Open Graph / link-preview tags. STATIC ONLY — WhatsApp's crawler does not
+      run JS, so these must live in the served HTML, never injected by React.
+      Image/url use the absolute production Pages URL (project subpath):
+        PRODUCTION_URL = https://raffibz.github.io/wedding-rsvp
+      These same tags are mirrored verbatim in public/404.html (Pages serves
+      404.html for deep links like /rsvp?t=…), so every shared invite previews
+      the same save-the-date. Keep the two blocks identical.
+    -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Raffi & Nver — Save the Date" />
+    <meta property="og:description" content="Saturday 01.08.26 · Yerevan. We'd love to celebrate with you — RSVP here." />
+    <meta property="og:image" content="https://raffibz.github.io/wedding-rsvp/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://raffibz.github.io/wedding-rsvp/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Raffi & Nver — Save the Date" />
+    <meta name="twitter:description" content="Saturday 01.08.26 · Yerevan. RSVP here." />
+    <meta name="twitter:image" content="https://raffibz.github.io/wedding-rsvp/og-image.jpg" />
     <!-- Poster fonts: Courier Prime (typewriter mono, used everywhere) +
          Cormorant Garamond (serif fallback for the commercial Tan Mon Cheri). -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

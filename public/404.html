@@ -3,6 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <title>Raffi & Nver — You're Invited</title>
+
+    <!--
+      Open Graph / link-preview tags — IDENTICAL to index.html. Pages serves
+      this 404.html for deep links (/rsvp?t=…), and WhatsApp's crawler (no JS)
+      may hit it directly, so the preview must render from this file too.
+      PRODUCTION_URL = https://raffibz.github.io/wedding-rsvp
+    -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Raffi & Nver — Save the Date" />
+    <meta property="og:description" content="Saturday 01.08.26 · Yerevan. We'd love to celebrate with you — RSVP here." />
+    <meta property="og:image" content="https://raffibz.github.io/wedding-rsvp/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://raffibz.github.io/wedding-rsvp/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Raffi & Nver — Save the Date" />
+    <meta name="twitter:description" content="Saturday 01.08.26 · Yerevan. RSVP here." />
+    <meta name="twitter:image" content="https://raffibz.github.io/wedding-rsvp/og-image.jpg" />
+
     <!--
       GitHub Pages SPA fallback. GitHub serves this file for any unknown path
       (e.g. /rsvp?t=abc on a hard load). We encode the path into the query string
