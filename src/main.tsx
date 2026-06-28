@@ -1,6 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { BrowserRouter } from 'react-router-dom'
+import { HashRouter } from 'react-router-dom'
 import App from './App'
 import './styles/global.css'
 
@@ -9,9 +9,15 @@ if (!rootEl) throw new Error('Root element #root not found')
 
 createRoot(rootEl).render(
   <StrictMode>
-    {/* basename = Vite base so deep links work under a GitHub Pages subpath */}
-    <BrowserRouter basename={import.meta.env.BASE_URL}>
+    {/*
+      HashRouter so every route is a #-fragment of the same index.html. On
+      GitHub Pages that means tokenized links (…/#/rsvp?t=…) return HTTP 200
+      (the crawler hits …/wedding-rsvp/ → 200 with OG tags) instead of the 404
+      a real path would get. The repo subpath stays in the real pathname, so no
+      basename is needed here. Old non-hash links are bridged by 404.html.
+    */}
+    <HashRouter>
       <App />
-    </BrowserRouter>
+    </HashRouter>
   </StrictMode>
 )

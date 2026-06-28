@@ -12,9 +12,10 @@
       run JS, so these must live in the served HTML, never injected by React.
       Image/url use the absolute production Pages URL (project subpath):
         PRODUCTION_URL = https://raffibz.github.io/wedding-rsvp
-      These same tags are mirrored verbatim in public/404.html (Pages serves
-      404.html for deep links like /rsvp?t=…), so every shared invite previews
-      the same save-the-date. Keep the two blocks identical.
+      The app uses HashRouter, so every shared link (…/#/rsvp?t=…) loads this
+      same index.html at the 200 root — these tags preview for all of them.
+      public/404.html mirrors these tags verbatim AND bridges already-shared
+      non-hash links (/rsvp?t=…) into the hash route. Keep the blocks identical.
     -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Raffi & Nver — Save the Date" />
@@ -35,31 +36,6 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Courier+Prime:wght@400;700&display=swap"
       rel="stylesheet"
     />
-    <!--
-      GitHub Pages SPA redirect restore.
-      404.html encodes the deep-link path into the query string and redirects here;
-      this script decodes it back into a clean URL before React Router boots.
-      Source: https://github.com/rafgraph/spa-github-pages
-    -->
-    <script>
-      (function () {
-        var l = window.location;
-        if (l.search[1] === '/') {
-          var decoded = l.search
-            .slice(1)
-            .split('&')
-            .map(function (s) {
-              return s.replace(/~and~/g, '&');
-            })
-            .join('?');
-          window.history.replaceState(
-            null,
-            null,
-            l.pathname.slice(0, -1) + decoded + l.hash
-          );
-        }
-      })();
-    </script>
   </head>
   <body>
     <div id="root"></div>

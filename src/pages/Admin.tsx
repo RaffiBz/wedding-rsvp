@@ -13,8 +13,9 @@ function statusOf(g: AdminGuest): 'Yes' | 'No' | 'pending' {
 
 function whatsappLink(g: AdminGuest): string {
   const phone = String(g.phone ?? '').replace(/\D/g, '') // intl digits only, no + or spaces
+  // Hash form so the link is HTTP 200 on GitHub Pages (and previews correctly).
   const msg = encodeURIComponent(
-    `Hi ${g.name}! Raffi & Nver would love to celebrate with you. RSVP here: ${SITE_URL}/rsvp?t=${g.token}`
+    `Hi ${g.name}! Raffi & Nver would love to celebrate with you. RSVP here: ${SITE_URL}/#/rsvp?t=${g.token}`
   )
   return `https://wa.me/${phone}?text=${msg}`
 }
